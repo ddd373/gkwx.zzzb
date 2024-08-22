@@ -1,0 +1,908 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>被腐蚀的童真：隐秘角落里的网络黑手</title>
+    <link href="images/woman.png" rel="shortcut icon">
+    <link rel="stylesheet" href="css/husband.css">
+    <link rel="stylesheet" href="css/scatter.css">
+    <link rel="stylesheet" href="css/cover.css">
+    <link rel="stylesheet" href="css/body.css">
+    <style>
+        /* 居中显示图片的容器 */
+        .image-container {
+            text-align: center; /* 水平居中 */
+            margin: auto; /* 垂直居中，如果需要 */
+            display: block; /* 使元素作为块级元素显示 */
+        }
+
+        /* 初始时第二张图片不显示 */
+        #gifImage {
+            display: none;
+        }
+    </style>
+	<style>
+        .flipbook {
+            position: relative;
+            width: 600px;
+            height: 400px;
+            margin: 20px auto;
+            perspective: 1200px;
+            border: 2px solid rgba(0, 0, 0, 0.2); /* 灰色透明边框 */
+            background-color: rgba(255, 255, 255, 0.8); /* 背景色 */
+        }
+        .page {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            box-sizing: border-box;
+            border: 2px solid transparent; /* 边框设置为透明，仅看到外层的边框 */
+            background-color: #150e12; /* 文本背景色 */
+            box-shadow: none;
+            transition: transform 1s;
+            cursor: pointer;
+			text-align: justify; /* 两端对齐 */
+			color: #2f2c2e;
+			background-image: url('path_to_you.jpg'); /* 替换为您的图片路径 */
+            background-size: cover; /* 背景图覆盖整个页面 */
+            background-position: center; /* 背景图居中显示 */
+            background-repeat: no-repeat; /* 背景图不重复 */
+        }
+        /* 初始状态，第一页在前面 */
+        #page1 { z-index: 2; transform: rotateY(0deg); }
+        /* 其他页面侧立 */
+        #page2, #page3 { z-index: 1; transform: rotateY(-90deg); }
+    </style>
+	<style>
+        .text-background {
+            position: relative; /* 相对定位，以便背景图片位于文字下方 */
+            padding: 20px; /* 为文字提供一些内边距 */
+            background-image: url('image/沉默.png'); /* 设置背景图片 */
+            background-size: cover; /* 背景图片覆盖整个元素 */
+            background-position: center; /* 背景图片居中显示 */
+            color: white; /* 文字颜色，根据背景调整 */
+            text-align: center; /* 文字居中对齐 */
+            min-height: 300px; /* 确保有足够的高度显示背景图片 */
+            /* 其他样式... */
+        }
+    </style>
+	<style>
+  .text-carousel-module {
+    position: relative;
+    width: 90%;
+    max-width: 1500px;
+    height: 800px; /* 根据内容和布局需要调整高度 */
+    margin: 50px auto;
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+
+  .text-carousel-module .background-gif {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('images/ending.gif'); /* 替换为您的动图URL */
+    background-size: cover;
+    background-position: center;
+    opacity: 1;
+    z-index: 0;
+  }
+
+  .text-container {
+    display: flex;
+    align-items: center; /* 垂直居中 */
+    justify-content: flex-start; /* 水平起始对齐 */
+    height: 100%;
+    padding: 	20px; /* 根据需要调整内边距 */
+    box-sizing: border-box;
+  }
+
+  .continuous-bounce {
+    animation: bounce 2s infinite ease-in-out;
+  }
+
+  .continuous-bounce p {
+    margin: 0 0 10px 0; /* 段落底部外边距 */
+    text-align: center; /* 文字左对齐 */
+	 white-space: nowrap;
+    font-size: 20px; /* 根据需要调整字体大小 */
+    line-height: 1.5; /* 根据需要调整行高 */
+  }
+
+  @keyframes bounce {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-5px);
+    }
+  }
+</style>
+	<style>
+  .chat-container {
+    width: 500px;
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin: auto;
+  }
+  .chat-message {
+    margin-bottom: 20px;
+    padding: 5px;
+    border-radius: 10px;
+  }
+  .user-left {
+    background-color: #f0f0f0;
+    float: left;
+    clear: both;
+  }
+  .user-right {
+    background-color: #e0e0ff;
+    float: right;
+    clear: both;
+  }
+  .user-name {
+    font-weight: bold;
+  }
+  .user-image {
+    width: 30px;
+    height: 30px;
+    border-radius: 15px;
+    float: left;
+    margin-right: 5px;
+  }
+</style>
+	<style>
+  .image-container {
+    width: 500px; /* 设置图片宽度 */
+    height: auto;  /* 保持图片比例 */
+  }
+</style>
+	<style>
+        .word-cloud {
+            display: inline-block;
+            padding: 20px;
+            margin: 10px;
+            font-size: 20px;
+            border-radius: 10px;
+            background-color: rgba(255, 255, 255, 0.5);
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            animation: fade-in-out 10s infinite;
+        }
+
+        /* 淡入淡出动画 */
+        @keyframes fade-in-out {
+            0%, 100% { opacity: 0; }
+            50% { opacity: 1; }
+        }
+    </style>
+<style>
+  .gallery {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: flex-start;
+  }
+  .image-text-pair {
+    position: relative;
+    margin-bottom: 20px;
+    cursor: pointer;
+    flex: 1 1 300px;
+    max-width: calc(33.333% - 20px);
+  }
+  .gallery-image {
+    width: 530px;
+    height: auto;
+    display: block;
+    transition: opacity 0.5s ease;
+  }
+  .gallery-text {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: 0;
+    padding: 10px;
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    text-align: justify;
+    opacity: 0;
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    transform: translateY(100%);
+    display: none;
+  }
+</style>
+	 <style>
+        .img-container {
+            text-align: center; /* 图片和文本水平居中 */
+            width: auto;
+            margin: 0 15px;
+        }
+        .img-caption {
+            color: #888888;
+            font-size: 0.8rem;
+            font-weight: 400;
+            line-height: 1.3; /* 合适的行高，可根据需要调整 */
+            margin-top: 0.5rem; /* 与图片的间隔 */
+        }
+    </style>
+</head>
+</head>
+
+<body>
+ <br data_temp_dwid="0">
+    <div id="nav">
+        <ul>
+        <li class="li1">
+                <a class="nav_a" href="#husband">角落</a>
+            </li>
+        <li class="li2">
+                <a class="nav_a" href="#child">失焦</a>
+            </li>
+         <li class="li4">
+                <a class="nav_a" href="#solution">守护</a>
+            </li>
+          <li class="li5">
+                <a class="nav_a" href="#fengmian">顶部</a>
+            </li>
+    </div>
+   <div class="fengmian" id="fengmian">
+        <!-- <img class="fengmian-03" id="fengmian-03" src="image/fengmian-03.png" alt=""> -->
+     <img class="fengmian-01" src="image/封面.jpg" >
+   </div>
+
+   
+<div id="intro">
+      <div class=p_center>
+      <img src="image/QQ聊天.gif" style="width: 700px; height: auto; margin: 10px auto; display: block;">
+		  <p class="p_img">【完整聊天记录加载中，请稍作等待】</p>
+		  
+            <p>这看似是两个小孩之间的一场处闺游戏</p>
+            <p>但实际上，在网线的另一端，他的身份却是······</p>
+			
+		<p class="p_img">点击图片查看“她”的真实身份</p>
+			 <!-- 第一张静态图片 -->
+            <img id="staticImage" src="image/QQ.png" onclick="switchToGif()" class="image-container">
+
+            <!-- 第二张动图，初始时不显示 -->
+            <img id="gifImage" src="image/舒某.png" class="image-container">
+    
+        <script>
+        // JavaScript 函数，用于切换到动图
+        function switchToGif() {
+            var staticImage = document.getElementById('staticImage');
+            var gifImage = document.getElementById('gifImage');
+            
+            // 切换显示状态
+            staticImage.style.display = 'none'; // 隐藏静态图片
+            gifImage.style.display = 'block'; // 显示动图
+        }
+    </script>
+			
+            <p>原来顶着可爱头像的小学生，真实身份却是一位26岁的成年男性：舒某</p>
+            <p style="white-space: nowrap;">2019-2022年，他通过这种方式，在网络平台结识诱骗了40名7-14岁的女孩，因此被判猥亵儿童罪</p>
+            <p>而像舒某这样，行为人以达到刺激或满足性欲为目的，利用网络社交工具</p>
+            <p>对不满14周岁的儿童实施的，非直接身体接触的猥亵行为，在法律界被称为</p>
+            <p><span style="color: #ff689d; font-size: 40px; font-weight: bold;font-style: italic;">隔空猥亵</span></p>
+  </div>
+
+</div>
+
+ </div>
+
+	
+<div id="story">
+	<div class=p_center>
+      <p>随着互联网的兴起，隔空猥亵作为一种借助网络平台的犯罪行为，在近几年呈高发态势</p>
+    <div class="pic-box" style="margin-top: 3em; text-align: center;">
+            <iframe src="https://dycharts.com/xshow/index.html?id=c_632841943c5a2088d1ae55a6fb5a6936" width="600" height="510" scrolling="no" frameborder="0" align=""></iframe>
+      </div>
+		
+    <p>据最高检发布的数据，从2020年到2023年9月</p>
+	<p>已累计追诉的罪犯数目竟达到了<span style="color: #ff689d;">3000余人</span>，而这个数字还在不断增长</p>
+	<p>根据最高人民法院2024年上半年司法审判工作报告显示</p>
+	<p>2024上半年，“隔空猥亵”、线上诱骗线下性侵等涉网性侵案件数量增加</p>
+	<p>强制猥亵、侮辱罪案件一审收案同比增长<span style="color: #ff689d;">20.07%</span></p>
+	<p>与此同时，层出不穷的隔空猥亵案件正在全国普遍发生</p>
+	
+	
+		 <div class="pic-box" style="margin-top: 3em; text-align: center;">
+            <iframe src="https://dycharts.com/xshow/index.html?id=c_3da2bfe57bb050b00201e89457486ca2" width="700" height="510" scrolling="no" frameborder="0" align=""></iframe>
+        </div>
+	
+		
+		
+	<p>&nbsp;</p>
+		<p style="white-space: nowrap;">一段又一段不为人知的时间中，一个又一个不为人知的角落里，一场又一场伤害正在不断上演</p>
+            <p>在隔空猥亵的案件中，犯罪者是通过网络来寻找侵害对象的，所以不受时空限制</p>
+            <p><span style="color: #ff689d;">一个人可以同时侵害多个未成年人，</span>在舒某案中，受到舒某一人侵害的儿童甚至达到<span style="color: #ff689d;">40人</span></p>
+    
+		
+		 <div class="pic-box" style="margin-top: 3em; text-align: center;">
+            <iframe src="https://dycharts.com/xshow/index.html?id=c_b350a6bd227ddd453e48921efd8cd8c4" width="500" height="300" scrolling="no" frameborder="0" align=""></iframe>
+        </div>
+		
+            <p>更有甚者通过网络获取未成年人的隐私照片、视频后，不仅以此要挟孩子</p>
+            <p>还将它们通过网络渠道传播、售卖，在更多的场域中造成无法弥合的伤害</p>
+		    <p style="white-space: nowrap;">武汉市检察院的主任张琦提到，从2019年到2021年，武汉市涉及网络性侵害未成年人犯罪案件中</p>
+		    <p>大多数未成年被害人患上了心理疾病，出现<span style="color: #ff689d;">失眠、噩梦、抑郁甚至自残</span>的症状</p>
+		    <p>他们的家庭成员，也出现不同程度的心理问题。</p>
+		
+		   <p class="p_img">点击下列文字翻页查看更多案例</p>
+		     <div class="flipbook">
+        <div id="page1" class="page" onclick="flipToPage(2)" style="color: #FEFEF7;">【案例一】
+            2017年，骆某将13岁女童小羽加为好友，通过言语恐吓，向其索要裸照，小羽被迫自拍裸照给骆某观看。后骆某又用公布裸照威胁，要求小羽与其见面并企图实施猥亵行为。卷宗材料里出现的很多细节如“做奴隶”“玩虐待”等，连成年人都无法接受。骆某曾胁小羽“如果不按要求拍裸照会被‘轮奸’”，又恐吓她如不继续顺从，将把照片在网络上公开。司法社工为她做心理咨询时，小羽已经出现了明显的创伤后应激反应。
+        </div>
+        <div id="page2" class="page" onclick="flipToPage(3)" style="color: #FEFEF7;">【案例二】
+           2018年12月，王辉将利用QQ冒充女性与被害人罗某在网上建立“污闺蜜”关系，聊天过程中，两人互换信息及照片时，王辉假借其他女性照片谎称自己名叫王倩、16岁、辍学，骗取了罗某的信任，罗某亦将自己的姓名、年龄（13岁），在校学生等情况告知了王辉。在得知对方只是一个13岁的孩子时，王辉以“闺蜜就应该互发照片”为由骗取罗某的裸体照片。之后，王辉又以曝光和散播罗某照片视频为由持续威胁，迫使罗某自拍多张裸体照片以及自拍时长二至三分钟的自慰视频供其观看，在将近1年的时间中，这个年仅13岁，本应该自由成长的孩子却每天活在被威胁的惶恐中惴惴不安。
+        </div>
+        <div id="page3" class="page" onclick="flipToPage(1)" style="color: #FEFEF7;">【案例三】
+            2020年5月1日，被告人吴某某通过网络游戏平台结识被害人曹某某，加为微信好友。从2020年5月9日至同年6月3日，吴某某在明知曹某某是不满14周岁的幼女的情况下，谎称自己15岁，骗取了曹某某的信任后，以“交换男女生小秘密”、“交换身体玩”等借口引诱曹某某发送私密照片，之后又进行胁迫女孩见面，长时间的精神折磨逼得一个女孩甚至说出了“你再逼我我要跳楼自杀“。
+        </div>
+      </div>
+
+    <script>
+        var currentPage = 1; // 当前页面编号
+
+        function flipToPage(nextPage) {
+            var pages = document.querySelectorAll('.page');
+            var currentElement = document.querySelector('.page:nth-child(' + currentPage + ')');
+            var nextElement = document.querySelector('.page:nth-child(' + nextPage + ')');
+
+            // 翻转动作
+            currentElement.style.transform = 'rotateY(90deg)';
+            nextElement.style.transform = 'rotateY(0deg)';
+            currentPage = nextPage; // 更新当前页面编号
+        }
+    </script>
+	        
+	    <p>&nbsp;</p>
+			<p style="color: #ff689d; font-weight: bold; text-align: center; font-size: 30px;font-style: italic;">由此可见，隔空猥亵已是一个不容忽视的问题</p>
+			    <p>&nbsp;</p>
+  
+			<p>因此，我们通过中国裁判文书网和北大法宝平台，收集了<span style="color: #ff689d;">196个</span>案例</p>
+            <p>尝试从中勾勒出隔空猥亵儿童行为的基本样态，分析其高发的原因</p>
+            <p>并以此为据，试图提出应对建议，以减少此类事件的发生</p>
+           <p>&nbsp;</p>
+
+			<p>2023年6月1日，公安部网络安全保卫局正式发布了对<span style="color: #ff689d;">“隔空猥亵”</span>的定义</p>
+            <p>即指行为人以满足性刺激为目的，以互联网为媒介，打着“个性交友”“招募童星”等幌子</p>
+            <p>诱骗、胁迫未成年人进行“裸聊”，或发送“裸照”“裸体视频”等的违法犯罪行为</p>
+            <p>虽然网络性侵犯罪者没有对被害儿童进行身体接触，但经最高人民检察院认定</p>
+            <p style="white-space: nowrap;">该行为对儿童人格尊严和心理健康造成严重侵害，与实际接触儿童身体的猥亵行为具有相同的社会危害性</p>
+			<p>符合刑法第二百三十七条规定，以强制猥亵罪或者猥亵儿童罪定罪处罚</p>
+           <p>&nbsp;</p>
+           <p>常见的网络隔空猥亵手段主要有诱骗和威胁，在案情介绍中</p>
+            <p style="white-space: nowrap;">加害人大多先谎报身份与被害儿童进行接触，并利用被害儿童的单纯无知来许以利益、提出要求</p>
+			<p>然后再通过公开已经获得的图片、视频等进行威胁，进一步达到其刺激或满足性欲的目的</p>
+           
+			<img src="images/话术 .gif" style="width: 900px; height: auto; margin: 10px auto; display: block;">
+			 <p class="p_img">【真实案例中犯罪者使用的诱骗威胁话术】</p>
+		
+    
+		<p style="font-size: 19px;">对搜集到的数据进行分析，我们发现了以下事实</p>
+		
+		<div class="scatter_area" id="scatter_area">
+        <div class="scatter_wrap" id="scatter_wrap">
+            <div id="mental_560">
+               <iframe src="https://dycharts.com/xshow/index.html?id=c_ce6b59821366f4d03663bd1d85670de6" width="700" height="590" scrolling="no" frameborder="0" align=""></iframe>
+            </div>
+            <div id="husband_736_1">
+                <iframe src="https://dycharts.com/xshow/index.html?id=c_1662c92001c56a0ebf06ddfb31b3666e" width="700" height="610" scrolling="no" frameborder="0" align=""></iframe>
+            </div>
+            <div id="child_518_1">
+                <iframe src="https://dycharts.com/xshow/index.html?id=c_69e23035eb248658a11d879fd7c9a2fe" width="700" height="610" scrolling="no" frameborder="0" align=""></iframe>
+            </div>
+            <div id="other_1033">
+                <iframe src="https://dycharts.com/xshow/index.html?id=c_ee69b117a7fb0b1314f99fe83a7c3e30" width="700" height="610" scrolling="no" frameborder="0" align=""></iframe>
+            </div>
+
+        </div>
+
+        <div class="scatter_desc" id="scatter_desc">
+            <div class="scatter_text" id="scatter_text1">
+              首先，数据表明，这些手段大多出现在<span style="color: #ff689d;">QQ平台</span>上，专家分析，这与QQ不要求实名认证并且用户年轻化有关
+            </div>
+            <div class="scatter_text" id="scatter_text2">
+                而后聚焦施暴者，会发现犯罪者整体偏年轻，多为15-36岁的男性，最小的犯罪者甚至才刚刚成年。另外，犯罪者的学历普遍较低，初中学历最多，有24人
+            </div>
+            <div class="scatter_text" id="scatter_text3">
+              接着将目光转向受害者，我们发现，受害者则基本上是10-14岁的女童，最小的甚至只有7岁
+            </div>
+            <div class="scatter_text" id="scatter_text4">
+             最后，我们发现，案发后，这些猥亵儿童的施暴者大多以强制猥亵或猥亵儿童的罪名，被判处短期有期徒刑，大多刑期为1-5年
+            </div>
+         
+        </div>
+    </div>
+		
+	
+</div>
+    </div>
+</div>
+	
+	
+<div id="husband">
+    <!-- <div id="husband_img">
+        <img src="image/husband.png">
+    </div> -->
+  <div class=p_center>
+    <div class="img_700" style="padding-bottom: 15px; z-index: 10;">
+        <img src="image/角落.png" class="img">
+    </div>
+	
+    <p>接受采访的检察官表示：<span style="color: #ff689d;">隔空猥亵类案件具有很高的隐蔽性</span></p>
+    <p style="white-space: nowrap;">对案件中的伤害持续时间进行分析，我们注意到70%的隔空猥亵行为，从实施到被发现常常间隔许久</p>
+      <p class="audiobox"><span style="color: #ff689d;">在有些案件中，潜伏期甚至长达七年</span>
+    </p>
+	  
+	  <div class="pic-box" style="margin-top: 3em; text-align: center;">
+            <iframe src="https://dycharts.com/xshow/index.html?id=c_864aa0ce3bdf11f7bb1680de689811c4" width="600" height="300" scrolling="no" frameborder="0" align=""></iframe>
+    </div>
+ 
+
+     <p>这意味着，当你阅读到这行文字的前一秒、这一秒和下一秒</p>
+	 <p>在互联网的某个暗处，屏幕一端就有某个孩子很可能正在被伤害</p>
+	 <p>而隔空猥亵行为的持续时间长也意味着孩子们处于侵害程度升级的危险之中</p>
+	 <p>在犯罪期间，犯罪分子常会以曝光被害人私密照片、视频的手段</p>
+	 <p>要求被害人线下见面并实施猥亵甚至是进行强奸</p>
+     
+   
+	  
+	  <div class="baby_reason_wrap"  >
+        <div class="baby_reason_imgs" id="baby_reason_imgs">
+            <iframe src="https://dycharts.com/xshow/index.html?id=c_f0d73c54bb117449a2ffd96d9c0bd00b" width="600" height="300" scrolling="no" frameborder="0" align=""></iframe>
+        </div>
+        <div class="baby_reason_desc" id="baby_reason_desc">
+            <div class="baby_reason_text" id="baby_reason_text1">
+                在196起案例中，有27起案件从线上猥亵转变成线下伤害，占比近乎14%
+            </div>
+          
+    </div>
+	 </div>
+	  
+
+    <p>而之所以隔空猥亵行为如此隐蔽，一个重要原因是</p>
+	<p><span style="color: #ff689d;">犯罪分子会通过网络绕过儿童的监护人、监管人直接与儿童接触，往往难以被发觉</span></p>
+	<p>2019年，漏志烽猥亵儿童案中，是被害人的老师偶然发现，孩子的手上有自残的痕迹</p>
+	<p style="white-space: nowrap;">这桩案件才得以浮出水面，而在此之前长达一个月的时间内，被害人已经在犯罪分子的胁迫下</p>
+	<p style="white-space: nowrap;">做出拍摄裸照、填写“女M自评表”、写保证书、检讨书和喝尿等严重危害身体和心理健康的不良行为</p>
+	
+    <div class="img_600" style="padding: 16px 0">
+        <img src="image/线上1.png" class="img">
+    </div>
+	
+
+    <p>另一方面，我们悲哀地发现</p>
+	<p class="audiobox"><span style="color: #ff689d;">面对这些伤害，本该呐喊呼救的孩子却选择了沉默</span>
+    </p>
+	
+	  
+	   <div class="husband_reason_wrap">
+        <div class="husband_reason_imgs" id="husband_reason_imgs">
+            <img src="images/迷茫.png" class="img" id="husband_reason1">
+            <img src="images/迷茫.png" class="img" id="husband_reason2">
+            <img src="images/迷茫.png" class="img" id="husband_reason3">
+        </div>
+        <div class="husband_reason_desc" id="husband_reason_desc">
+            
+     <p style="white-space: nowrap;">2021年，已是一名硕士研究生的程珊，终于给自己9年前的遭遇找到了解释，那叫“隔空猥亵”</p>
+	 <p>2012年，尚且年幼的程珊接到了一通电话，对方是一名自称宠物医生的男子</p>
+	 <p>他教程珊如何用手自慰，并告诉她，那是一种能让自己渐入佳境的快乐感受</p>
+	 <p>当然，感到快乐以后要“分享”出来</p>
+	 <p style="white-space: nowrap;">“他让我一边对着手机自慰一边呻吟，后来为了让我呻吟得更好，他会提前发一些性爱视频给我。”</p>
+	 <p>程珊把他当成了网恋对象，虽然害怕却没有拒绝</p>
+	 <p>后来，视频那边的“男友”开始与她进行“性爱互动”，给她寄来情趣内衣</p>
+	 <p>这让程珊心生恐惧，一方面是担心藏在卧室的这个秘密被父母发现</p>
+	 <p>另一方面，她坦言，对身体的探究让自己越来越迷茫</p>
+	 <p>“有时候上课也在想（做爱）这件事，觉得自己变成了一个下流的女孩。”</p>
+	
+	
+	 <p>持续了大概7个月，程珊逐渐疏远这段关系，她没敢和任何人讲，直到2021年</p>
+	 <p>在看到一起“隔空猥亵”案件的报道后，已经成年的程珊第一次知道了“隔空猥亵”</p>
+	 <p>她在社交媒体上发出一句话</p>
+	 <p><span style="color: #ff689d;; font-size: 30px; font-weight: bold;">“原来我曾经被侵犯"</span></p>
+
+        </div>
+
+    </div>
+	  
+	  
+	  
+	  
+</div>
+
+
+<div id="child">
+
+    <!-- <div id="child_img">
+        <img src="image/child.png">
+    </div> -->
+     <div class=p_center>
+    <p>&nbsp;</p>
+    
+    <div class="img_700" style="padding-bottom: 15px; z-index: 10;">
+        <img src="image/失焦.png" class="img">
+    </div>
+
+	
+    <p><span style="color: #ff689d;">被绕过的家长，沉默的孩子，善于伪装的罪犯</span></p>
+	<p>让隔空猥亵在隐秘的角落里潜滋暗长</p>
+	<p>我们不禁想要抽丝剥茧，寻找到那些被忽略的细节，解答角落为何隐蔽</p>
+	<p>&nbsp;</p>
+	
+    <p><span style="color: #ff689d;">随着互联网的普及，几乎一切信息都能够在成人和儿童之间共享</span></p>
+    <p style="white-space: nowrap;"><span style="color: #ff689d;">成人和儿童之间的界限逐渐模糊，儿童被迫提早进入存有冲突、战争、性爱、暴力的成人世界</span></p>
+   <p>&nbsp;</p>
+
+	<p>根据网信办发布的《第5次全国未成年人互联网使用情况调查报告》</p>
+	<p>2018年-2022年，中国未成年网民规模呈扩大态势，</p>
+	<p>2022年中国未成年网民规模有<span style="color: #ff689d;">1.93亿</span>，未成年人互联网普及率已经达到<span style="color: #ff689d;">97.2%</span></p>
+		 
+      <div class="pic-box" style="margin-top: 3em; text-align: center;">
+            <iframe src="https://dycharts.com/xshow/index.html?id=c_1c3c8aa949411dc0696e36c44a444722" width="600" height="510" scrolling="no" frameborder="0" align=""></iframe>
+       </div>
+		
+    <p>在如此庞大的未成年网民基数下，<span style="color: #ff689d;">各类网络软件并没能对未成年使用者做出合理规制</span></p>
+	<p>一些色情、暴力信息就这样找上了未成年人</p>
+		
+    <p class="p_img" style="margin-bottom: 1.3rem;">【一项对我国青春期(12-18岁)网络性诱惑现状的分层抽样调查显示】</p>
+	<div class="img-container" >
+    <img src="images/20.png" style="width: 600px; height: auto;">
+    <p class="img-caption">
+        数据说明：该研究以东中西部的三个城市（厦门、荆州、南宁）中的初高中以及中等职业学校的学生为调查对象，发放学生问卷600 份，回收有效问卷 550 份，研究结果发表于《中国青年社会科学》2020年第6期（CSSCI来源期刊、2020版复合影响因子为2.613）
+    </p>
+</div>
+	
+	
+	<p style="white-space: nowrap;">2022年3月，最高人民检察院公布了一起典型案例：某短视频平台在没有经过儿童监护人同意的情况下</p>
+    <p>收集了大量儿童个人信息并向用户进行有选择地推送，一名男子通过平台后台推送的视频</p>
+    <p>获得了儿童的个人信息，并使用私信功能联系了多名儿童，对其中三名儿童实施了猥亵犯罪</p>
+    <p>&nbsp;</p>
+		
+	<p>与此同时，面对危机四伏的网络环境，</p>
+    <p><span style="color: #ff689d;">本该起到屏障作用的家庭对于孩子们使用网络的监管也没有那么到位</span></p>
+		 
+		 <div style="display: flex; justify-content: center; align-items: center; width: 100%; max-width: 1200px; margin: 0 auto;">
+        <div style="flex: 1; margin: 10px;">
+            <iframe src="https://dycharts.com/xshow/index.html?id=c_2cb1621c66ca31b40adbf75318cba857" width="600" height="510" scrolling="no" frameborder="0" align=""></iframe>
+        </div>
+        <div style="flex: 2; margin: 10px; padding: 20px; text-align: justify;">
+            <p>根据“女童保护”2019年度统计报告显示</p>
+		    <p>仅有四成家长会对孩子上网进行严格监管</p>
+	        <p>大多数家长并不能及时注意到孩子在网上是否结识陌生人</p>
+	       <p>与陌生人进行了何种沟通以及是否受到来自网友的侵害</p>
+        </div>
+    </div>
+
+	<p style="white-space: nowrap;">
+		<span style="color: #ff689d;">除了监管疏忽，更令人担忧的还有家长们谈“性”色变的反应，以及其所带来的家庭和学校性教育的缺失</span></p>
+
+    <p>&nbsp;</p>
+	<p>中国人对性讳莫如深，很少有家长懂得如何对孩子进行性教育</p>
+	<p>调查显示（具体数据说明见下图），仅有<span style="color: #ff689d;">36.65%</span>的被调查家长表示主动对孩子进行过性与生殖健康相关的教育</p>
+	<p>有媒体采访一位办理过数起隔空猥亵案件的检察官，他提到：</p>
+	<p>“一些家庭对于性的开放程度和对儿童性教育的态度可能存在保守或者封闭的倾向</p>
+	<p style="white-space: nowrap;">这种观念的影响使得父母对于隔空猥亵儿童犯罪的认知不足，往往认为隔空猥亵犯罪是遥远的事情</p>
+	<p>因此，缺乏对于该类犯罪的重视和警惕，最终导致了悲剧。”</p>
+	<p style="white-space: nowrap;">专注儿童性教育的社会企业“保护豆豆”的创始人胡佳威，过去几年接触了不少因隔空猥亵来访的家长</p>
+	<p>“他们的愤怒都是属于那种，你怎么这么大了，还这么傻这么蠢？</p>
+	<p>都是初中生/高中生了，怎么可能还不懂这些？但是没有人跟孩子讲过这些（性教育）“</p>
+	
+	 <p>&nbsp;</p>
+	 <p>至于被调查的家长没有对孩子进行教育的原因，则十分多元</p>
+		 
+		 <div class="child_reason_wrap" >
+                <div class="child_reason_imgs" id="child_reason_imgs">
+                    <iframe src="https://dycharts.com/xshow/index.html?id=c_b8a32ff61c6b688178b18ed74f88371f" width="600" height="510" scrolling="no" frameborder="0" align=""></iframe>
+                </div>
+                <div class="child_reason_desc" id="child_reason_desc">
+                    
+                    <div class="child_reason_text" id="child_reason_text1">
+                        调查显示，在63.35%没有对孩子进行性教育的家长中，41.50%的家长表示“现在孩子还小”
+                    </div>
+                    <div class="child_reason_text" id="child_reason_text2">
+                        还有16.99%和14.05%的家长表示“自己不好意思教育”或“不知道怎么教育”,这部分家长表示，自己并不清楚性相关的知识
+                    </div>
+                    <div class="child_reason_text" id="child_reason_text3">
+                        而有8.50%的学生家长则表示，没有进行教育的原因是孩子不愿意接受
+                    </div>
+                </div>
+        </div>      
+
+        <p style="white-space: nowrap;">对于面对自己不愿意或者不知道如何教的知识，很多家长寄希望于几乎贯穿孩子整个儿童时期的学校</p>
+        <p>可遗憾的事，学校也并没有尽到应有的义务。</p>
+	
+        <p>&nbsp;</p>
+        <p>从上世纪80年代至今，教育部一直在中小学持续推进性教育相关教学，但落到学校层面，</p>
+		<p><span style="color: #ff689d;">性教育却在某种程度上“消失”了</span></p>
+        <p style="white-space: nowrap;">2021年6月前，官方文件从未单独提到“性教育”，性教育一直是以青春期教育、健康教育的名义开展的</p>
+        <p>联合国2018年发布的《中国初级中学性教育实施状况》</p>
+        <p style="white-space: nowrap;">对北京、黑龙江、上海、四川、云南和浙江六省市30所初中的调研发现，学校开展性教育的课时波动较大</p>
+        <p>七八年级学生每学期接受的性教育课时多在 1~8 课时之间，九年级较少</p>
+		<p>但即使安排了性教育课时，也很容易被其他更重要的科目挤占</p>
+  	
+	      <div class="text-background">
+        <p>在家庭和学校性教育双双缺位的情况下，孩子们独自面对危机四伏的网络环境</p>
+        <p style="white-space: nowrap;">网络黑手可以轻而易举地将他们拽入隔空猥亵的深渊，可是当悲剧发生了，孩子们需要维权的时候</p>
+        <p>我们却惊讶于，还会有家长因为“觉得丢脸”而选择沉默或者按下不提。</p>
+        
+		<p>&nbsp;</p>
+        <p>被舒某侵犯的不到8岁的书悦（化名），哭着向家长诉说，自己被一名网友要去了私密照片</p>
+        <p>并被对方威胁，<span style="color: #ff689d;">可换来的却是爸爸的一巴掌</span></p>
+        <p>这位父亲的关注点在于，他跟书悦说过不能随便给人看自己的隐私部位，但她没有听</p>
+		<p>无独有偶，另一位受害孩子爸爸知道后，<span style="color: #ff689d;">第一时间也是打孩子</span></p>
+        <p>甚至为了避开取证人员上门，带着8岁的女儿连夜离家</p>
+		<p>在听到孩子被“隔空猥亵”后，身为成年人的家长竟然与罪犯统一战线，刀尖向内</p>
+	    <p>在制高点用愤怒与埋怨来指责处于弱势的孩子，“为什么没有保护好自己”</p>
+	    	  
+	    <p style="white-space: nowrap;">多数家长对于孩子被隔空猥亵一事的第一反应是不敢相信，随之而来的是对司法机关介入的抗拒</p>
+		<p>“如果配合取证会记录在孩子的档案里面吗？”“开庭的时候别人会知道吗？” </p>
+	    <p>话语间，担忧和害怕显露无疑，<span style="color: #ff689d;">“猥亵”这个词仿佛天生让人难以启齿</span></p>
+			  
+<div id="wordCloud" class="word-cloud">
+    <!-- 文本将通过JavaScript动态插入 -->
+</div>
+
+<script>
+    // 词云图循环的JavaScript代码
+    const texts = [
+        "“你也有错！”",
+        "“为什么（嫌疑人）没盯上别人会盯上你？”",
+        "谁让你拍那些照片的？”",
+        "“你用手机上网都在干些什么？”",
+        "“你也太不自爱了”",
+        "“你手机里到底存了多少见不得人的东西，才会让人有机可乘？”",
+        "“你总是这么不设防，太不懂得保护自己了，这次就当是个教训吧！”",
+        "“你就不该随意泄露个人信息，这次被盯上也是自作自受。”",
+        "“你看看你，怎么一点安全意识都没有，别人想害你都轻而易举。”",
+        "“你平时都浏览些什么网站？这次出事，肯定和你平时的习惯有关。”",
+        "“你分享的每一张照片，都可能成为别人攻击你的武器，你怎么就不明白呢？”"
+    ];
+    const wordCloud = document.getElementById('wordCloud');
+    let currentTextIndex = 0;
+
+    // 函数用于更新词云图的文本
+    function updateWordCloud() {
+        wordCloud.textContent = texts[currentTextIndex];
+        currentTextIndex = (currentTextIndex + 1) % texts.length;
+    }
+
+    // 每隔一段时间更新词云图的文本
+    setInterval(updateWordCloud, 5000); // 每5秒切换一次文本
+
+    // 页面加载时立即更新文本
+    window.onload = updateWordCloud;
+</script>
+
+			 <p class="p_img">【家长得知后第一反应】</p>
+			  
+	 </div>
+		 <img src="images/话难听.gif" style="width: 900px; height: auto; margin: 10px auto; display: block;">
+ 
+</div>
+
+<div id="solution">
+	<div class=p_center>
+	<p>&nbsp;</p>
+		 <div class="img_700" style="padding-bottom: 15px; z-index: 10;">
+        <img src="image/守护.png" class="img">
+    </div>
+	<p style="font-size: 17px;">隔空猥亵不应隔法，为了保护好儿童，</p>
+		<p style="font-size: 17px;">用<span style="color: #ff689d;">法律</span>有效地震慑犯罪分子，正当其时</p>
+	
+		<div>
+        <img src="image/法律.png" class="img" style="width: 800px; height: auto;">
+     </div>
+		
+    <p style="white-space: nowrap;">除了依法严厉打击针对未成年人的性犯罪行为，并在网络层面为未成年人提供更周全的保护措施外</p>
+    <p style="white-space: nowrap;"><span style="color: #ff689d;">社会、学校和家庭</span>这三个关键方面也应共同发力，构筑起防范"隔空"性侵未成年人的坚固防线</p>
+   <p class="p_img">【点击下列词云图查看具体建议】</p>
+	
+<div class="gallery">
+  <!-- 图片1 -->
+		<div class="image-text-pair">
+    <img src="image/社会.png" style="width: 700px;" class="gallery-image">
+    <p class="gallery-text">
+    &nbsp; &nbsp; 在社会层面，相关机构需要提升对网络性侵未成年人案件的防范意识和应对能力。网络信息管理部门应担起净化网络环境的责任，特别是实施针对性的监管措施，各平台可以根据自身内容，进一步完善青少年模式功能，或者单独推出软件自身的青少年适用版本，为儿童提供防护。学者魏雪然建议：“为避免儿童成为潜在的性侵害对象，网络平台应当在降低个人信息收集、分析成本的前提下，精确识别网络平台中的儿童用户并合理确定“对象隔离”“信息隔离”等特殊保护模式的适用范围及保护措施，切实保护未成年人的身心健康。
+    </p>
+  </div>
+  <!-- 图片2 -->
+  <div class="image-text-pair" style="margin-top: 20px;">
+    <img src="image/学校.png" style="width: 650px;" class="gallery-image">
+    <p class="gallery-text">
+      &nbsp; &nbsp; 在学校层面，重视对未成年人网络使用的监管，构建完备的性教育体系，应当定期开展生理知识校园讲堂。在中小学校园中，可以对教授生理知识的老师进行统一培训，提高其专业素养的同时转变其思想观念，确保教学方式科学有效。正如学者雷浩所说的“要加强学校的教育和宣传，推动性教育和学生个人保护观念的普及。其中包括但不限于教授学生如何正确辨别不良信息和不当行为，教导他们拒绝和避免不适当的网络交流”。
+    </p>
+  </div>
+  <!-- 图片3 -->
+  <div class="image-text-pair" style="margin-top: 40px;">
+    <img src="image/家庭.png" style="width: 537.8px;"class="gallery-image">
+    <p class="gallery-text">
+     &nbsp; &nbsp; 在家庭层面，家长们需要承担起性教育的责任，适时地与孩子进行性启蒙对话，加深对孩子内心世界的理解，密切关注孩子的日常行为，孩子出现异常，比如活泼的孩子突然变的沉默，要第一时间与孩子谈心交心，了解真实情况，及时介入处理。其次，在互联网使用方面，学者王晓霞、孙冰也建议家长应该给予孩子足够的关爱和支持，合理监护孩子在网络上的活动，并对他们的网络行为进行指导和规范。并与孩子建立良好的沟通和信任关系，教育他们如何正确使用互联网，认识到网络存在的潜在危险。
+    </p>
+  </div>
+</div>
+
+<script>
+  document.querySelectorAll('.image-text-pair').forEach(pair => {
+    const image = pair.querySelector('.gallery-image');
+    const text = pair.querySelector('.gallery-text');
+
+    image.addEventListener('click', function() {
+      text.style.display = 'block';
+      text.style.opacity = 1;
+      text.style.transform = 'translateY(0)';
+    });
+
+    text.addEventListener('click', function() {
+      text.style.opacity = 0;
+      text.style.transform = 'translateY(100%)';
+      setTimeout(() => {
+        text.style.display = 'none';
+      }, 500);
+    });
+  });
+</script>
+
+		<p style="white-space: nowrap;font-size: 18px;">我们期望通过社会各界的共同努力和协作，为未成年人打造一个更加安全、健康的成长环境</p>
+		<p style="white-space: nowrap;font-size: 18px;">以此有效预防网络性侵害事件的发生</p>
+</div>
+
+
+	
+<div class="text-carousel-module">
+  <div class="background-gif">&nbsp;</div>
+<div class="text-container">
+  <div class="continuous-bounce">
+      <!-- 文字内容 -->
+	
+      <p style="font-weight: 600;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;台湾作家蔡宜文说，</p>
+        <p style="font-weight: 600;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;任何关于性的暴力，</p>
+      <p style="font-weight: 600;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;都不是由施暴者独立完成的，</p>
+      <p style="font-weight: 600;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;而是由整个社会协助施暴者完成的。</p>
+      <p>&nbsp;</p>
+      <p style="font-weight: 600;"> &nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;日益复杂的网络空间，成为犯罪分子的“狩猎场”,</p>
+      <p style="font-weight: 600;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;平台的监管不力，家庭的缺位，性教育的缺失，</p>
+      <p style="font-weight: 600;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;为“隔空猥亵"的滋生提供了隐蔽温床，</p>
+      <p style="font-weight: 600;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;角落里的罪恶，腐蚀着孩子的童真，</p>
+      <p style="font-weight: 600;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;我们与恶的距离，其实并不遥远。</p>
+	  <p>&nbsp;</p>
+      <p style="font-weight: 600;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;所以，在鱼龙混杂的乱象中，</p>
+      <p style="font-weight: 600;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;请以家庭为盾，以法律为刃，</p>
+      <p style="font-weight: 600;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;将躲在暗处的人渣们，</p>
+      <p style="font-weight: 600;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;永远地钉在耻辱柱上；</p>
+	  <p>&nbsp;</p>
+      <p style="font-weight: 600;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;这，是我们一路努力和奋战的意义。</p>
+    </div>
+  </div>
+</div>
+	
+	<div style="width:1200px;height:0.5px;margin:0 auto;padding:0;background-color:#ffffff;overflow:hidden;"></div>
+
+<div id="footer">
+    <p style="font-size: 1rem; line-height: 2rem;">指导老师：&nbsp;罗哲宇&nbsp;袁歆悦</p>
+    <p style="font-size: 1rem; line-height: 2rem;">数据分析：&nbsp;李敏&nbsp;徐熙喆&nbsp;王岚&nbsp;王馨怡</p>
+    <p style="font-size: 1rem; line-height: 2rem;">撰文：&nbsp;李敏&nbsp;徐熙喆&nbsp;王岚&nbsp;王馨怡&nbsp;张丹宁</p>
+    <p style="font-size: 1rem; line-height: 2rem;">设计：&nbsp;李敏&nbsp;徐熙喆&nbsp;王岚&nbsp;王馨怡&nbsp;张丹宁</p>
+	<p style="font-size: 1rem; line-height: 2rem;">前端：&nbsp;李敏&nbsp;徐熙喆&nbsp;王岚&nbsp;王馨怡&nbsp;张丹宁</p>
+ 
+    <p>&nbsp;</p>
+    <p style="font-size: 1.1rem; line-height: 2rem;">参考资料：</p>
+    <p style="font-size: 0.8rem; line-height: 2rem;">[1]最高法：今年上半年线上“隔空猥亵”等涉网性侵案件增加 _光明网 (gmw.cn)</p>
+    <p style="font-size: 0.8rem; line-height: 2rem;">[2]陈诺｜网络隔空猥亵儿童犯罪行为治理刍议_澎湃号·政务_澎湃新闻-The Paper</p>
+    <p style="font-size: 0.8rem; line-height: 2rem;">[3]法治日报|要把“隔空”性侵害未成年人的网络截断 (thepaper.cn)</p>
+    <p style="font-size: 0.8rem; line-height: 2rem;">[4]孩子被隔空猥亵后，不愿报警的家长把她打了一顿_腾讯新闻 (qq.com)</p>
+  <p style="font-size: 0.8rem; line-height: 2rem;">[5]《最高检向十三届全国人大常委会报告开展未成年人检察工作情况》，载最高人民检察院官网</p>
+  <p style="font-size: 0.8rem; line-height: 2rem;">[6]朱光星.网络隔空猥亵儿童的定罪研究——以保护儿童为分析视角[J].中国政法大学学报,2022,(04):206-217.</p>
+  <p style="font-size: 0.8rem; line-height: 2rem;">[7]袁野.网络隔空猥亵儿童行为的刑法定性[J].青少年犯罪问题,2019,(04):12-20. (qq.com)</p>
+	<p style="font-size: 0.8rem;line-height: 2rem;">[8]雷浩.网络隔空猥亵儿童犯罪防控难点及对策研究——基于52份刑事判决书为分析样本[J].预防青少年犯罪研究,2024,&nbsp; (03):40-47.(qq.com)</p>
+	<p style="font-size: 0.8rem; line-height: 2rem;">[9]邵守刚.猥亵儿童犯罪的网络化演变与刑法应对——以2017-2019年间的网络猥亵儿童案例为分析样本[J].预防青少年犯罪研究,2020,(03):48-57.(qq.com)</p>
+	 <p style="font-size: 0.8rem; line-height: 2rem;">[10]深度|“隔空猥亵”，伸向孩子的那只看不见的手</p>
+  <p style="font-size: 0.8rem; line-height: 2rem;">[11]部分图片参考插画《手》之爱的操控</p>
+    <p>&nbsp;</p>
+    <p style="font-size: 1rem; text-align: center; line-height: 2rem;">2024 © 中国传媒大学 </p>
+</div>
+
+<script src="js/jquery-3.6.0.min.js"></script>
+<script src="js/ScrollMagic.js"></script>
+<script src="js/debug.addIndicators.js"></script>
+<script src="js/scroll.charts.js"></script>
+<script src="js/scatter.js"></script>
+<script src="js/scatter2.js"></script>
+<script src="js/scatter3.js"></script>
+<script src="js/scatter4.js"></script>
+<script src="js/particle.js"></script>
+<script src="js/cover.js"></script>
+<script src="js/yinpin.js"></script>
+<script src="js/floating.js"></script>
+<script>
+
+    var endingDuration = $("#ending").height()
+
+    new ScrollMagic.Scene({
+        triggerElement: "#ending",
+        triggerHook: 0.2,
+        duration: endingDuration * 0.68
+    })
+        .setPin("#ending_gif")
+        .addTo(controller);
+
+    new ScrollMagic.Scene({
+        triggerElement: "#ending",
+        triggerHook: 0.2,
+        duration: endingDuration * 0.68
+    })
+        .setPin("#ending_img")
+        .addTo(controller);
+
+    new ScrollMagic.Scene({
+        triggerElement: "#ending",
+        triggerHook: 0.2,
+        duration: endingDuration * 0.68
+    })
+        .setPin("#light_gif")
+        .addTo(controller);
+
+
+    
+	document.addEventListener('DOMContentLoaded', function() {
+  var textElement = document.getElementById('clickable-text');
+  var imageElement = document.getElementById('hidden-image');
+
+  textElement.addEventListener('click', function() {
+    imageElement.style.display = 'block'; // 显示图片
+  });
+});
+	
+<script>
+        var currentPage = 1; // 当前页面编号
+
+        function flipToPage(nextPage) {
+            var pages = document.querySelectorAll('.page');
+            var currentElement = document.querySelector('.page:nth-child(' + currentPage + ')');
+            var nextElement = document.querySelector('.page:nth-child(' + nextPage + ')');
+
+            // 翻转动作
+            currentElement.style.transform = 'rotateY(90deg)';
+            nextElement.style.transform = 'rotateY(0deg)';
+            currentPage = nextPage; // 更新当前页面编号
+        }
+	
+<script type="text/javascript">
+
+
+</script>
+<script type="text/javascript">
+
+    if ((/Android|webOS|iPhone|iPad|iPod|Pad|Mobile|BlackBerry|Windows CE|Windows Phone|Linux/i.test(navigator.userAgent))) {
+        if (window.location.href.indexOf("?pc") < 0) {
+            try {
+
+                $("#husband #scatter_area2 .scrollmagic-pin-spacer").empty();
+                $("#scatter_area2 .scrollmagic-pin-spacer").attr('style', "rel");
+                $("#ending .scrollmagic-pin-spacer").attr('style', 'rel');
+                //alert('1');
+
+            }
+            catch (e) { }
+        }
+    }
+</script>
+
+
+</body>
+
+</html>
